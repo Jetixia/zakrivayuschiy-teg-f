@@ -96,8 +96,12 @@
   filter: contrast(80%);
 }
 
-.filter-saturate-grayscale-brightness {
-  filter: saturate(40%) grayscale(20%) brightness(130%);
+.filter-saturate-grayscale-contrast {
+  filter: saturate(40%) grayscale(20%) contrast(80%);
+}
+
+.filter-grayscale-saturate {
+  filter: grayscale(60%) saturate(40%);
 }
 
 .filter-hue-rotate {
@@ -106,6 +110,14 @@
 
 .filter-sepia {
   filter: sepia(70%);
+}
+
+.filter-hue-rotate-contrast {
+  filter: hue-rotate(180deg) contrast(70%);
+}
+
+.filter-brightness {
+  filter: brightness(120%);
 }
 
 .card-label {
@@ -127,9 +139,9 @@
 
 @supports (-webkit-text-stroke: 1px var(--text-stroke-color)) or (text-stroke: 1px var(--text-stroke-color)) {
   .card-label {
-    -webkit-text-stroke: 1px var(--text-stroke-color); 
-    text-stroke: 1px var(--text-stroke-color);   
-    text-shadow: none;    
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+    text-stroke: 1px var(--text-stroke-color);
+    text-shadow: none;
   }
 }
 
@@ -162,7 +174,6 @@
   align-items: center;
   justify-content: center;
   outline: none;
-  border: none;
   cursor: pointer;
   background-color: transparent;
   text-align: center;
