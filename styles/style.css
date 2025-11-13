@@ -41,7 +41,6 @@
   font-size: var(--logo-font-size);
   font-family: var(--accent-font);
   font-weight: 400;
-  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -54,7 +53,7 @@
 }
 
 .section-cards {
-  width: var(--header-section-width);
+  inline-size: var(--header-section-width);
   margin-inline: auto;
   display: flex;
   gap: 50px;
@@ -89,37 +88,24 @@
 .image {
   display: block;
   width: 100%;
-  min-block-size: 696px;
-  max-block-size: 696px;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
-.filter-image-practicum {
+.filter-contrast {
   filter: contrast(80%);
 }
 
-.filter-image-hello {
-  filter: saturate(40%) brightness(150%) grayscale(20%) contrast(80%);
+.filter-saturate-grayscale-brightness {
+  filter: saturate(40%) grayscale(20%) brightness(130%);
 }
 
-.filter-image-cyberspace {
-  filter: grayscale(60%) saturate(40%);
-}
-
-.filter-image-tag {
+.filter-hue-rotate {
   filter: hue-rotate(150deg);
 }
 
-.filter-image-office {
+.filter-sepia {
   filter: sepia(70%);
-}
-
-.filter-image-adaptive {
-  filter: hue-rotate(180deg) contrast(70%);
-}
-
-.filter-image-motivation {
-  filter: contrast(70%);
 }
 
 .card-label {
@@ -131,6 +117,7 @@
   font-size: 14px;
   text-transform: uppercase;
   color: #000;
+  opacity: 0.5;
   mix-blend-mode: hard-light;
   z-index: 1;
   text-shadow: -1px -1px 0 var(--text-stroke-color),
@@ -138,10 +125,11 @@
     1px 1px 0 var(--text-stroke-color);
 }
 
-@supports (-webkit-text-stroke: 1px var(--text-stroke-color)) {
+@supports (-webkit-text-stroke: 1px var(--text-stroke-color)) or (text-stroke: 1px var(--text-stroke-color)) {
   .card-label {
-    -webkit-text-stroke: 1px var(--text-stroke-color);
-    text-shadow: none;
+    -webkit-text-stroke: 1px var(--text-stroke-color); 
+    text-stroke: 1px var(--text-stroke-color);   
+    text-shadow: none;    
   }
 }
 
@@ -153,9 +141,8 @@
   line-height: 1.1667;
 }
 
-.card-text-memories {
-  margin-block-start: 25px;
-  line-height: 1.1667;
+.description-text .card-text:not(:last-child) {
+  margin-block-end: 25px;
 }
 
 .buttons-block {
@@ -179,6 +166,7 @@
   cursor: pointer;
   background-color: transparent;
   text-align: center;
+  border: 2px solid #000;
 }
 
 .card__icon-button {
@@ -186,6 +174,7 @@
   transition: outline 0.3s ease;
   outline: 2px solid transparent;
   outline-offset: -1px;
+  border: none;
 }
 
 .card__icon-button:focus {
@@ -271,11 +260,9 @@
   min-width: 130px;
   min-height: 38px;
   padding-block-start: 5px;
-  border: 2px solid #000;
 }
 
 .save-button {
-  border: 2px solid #000;
   align-self: center;
   background-color: #fff;
   padding: 15px 18px;
@@ -307,7 +294,7 @@
 }
 
 .modal-window::backdrop {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
 .modal-content {
@@ -344,10 +331,10 @@
 .agree-button {
   min-width: 293px;
   min-height: 38px;
-  border: 2px solid #000;
   background-color: #fff;
   font-family: var(--accent-font);
   font-size: 14px;
+  text-transform: uppercase;
 }
 
 .button-effects {
@@ -362,7 +349,6 @@
   z-index: 1;
   color: var(--button-text-color);
   mix-blend-mode: difference;
-  transition: color 0.3s ease;
 }
 
 .button-effects .icon {
@@ -374,7 +360,6 @@
 
 .button-effects:focus {
   outline: none;
-  box-shadow: 2px 2px 0 var(--accent-color);
 }
 
 .button-effects:focus-visible {
@@ -392,7 +377,7 @@
   background-color: var(--accent-color);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease-in-out;
 }
 
 .button-effects:hover::before {
@@ -409,11 +394,6 @@
   .card-title {
     padding-block-start: 5px;
     padding-block-end: 4px;
-  }
-
-  .image {
-    min-block-size: 371px;
-    max-block-size: 371px;
   }
 
   .card__like-button {

@@ -13,7 +13,7 @@
   --padding-block: clamp(7.5rem, 7.28rem + 0.94vw, 8.125rem);
   --padding-inline: clamp(1rem, -1.34rem + 10.00vw, 7.65625rem);
   --cards-width: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
-  --text-stroke-color: rgba(255, 255, 255, 0.5);
+  --text-stroke-color: rgba(255, 255, 255, 1);
   --accent-color: #000;
   --button-text-color: #fff;
   --contour-color: #000;
